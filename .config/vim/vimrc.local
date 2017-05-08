@@ -1,0 +1,60 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=/usr/share/vim/bundle/Vundle.vim
+call vundle#begin('/usr/share/vim/bundle')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+" vim-repeat must come before other plugins
+Plugin 'tpope/vim-repeat'
+
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'gilgigilgil/anderson.vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dadbod'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
+
+Bundle 'sonph/onehalf', {'rtp': 'vim/'}
+call vundle#end()
+filetype plugin indent on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+
+set ignorecase
+set smartcase
+set hlsearch
+set autoindent
+set expandtab
+set smartindent
+set smarttab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set number
+syntax on
+colorscheme anderson
+colorscheme nord
+
+noremap ; :
+noremap : ;
+nnoremap <C-j> <S-j>
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
+nnoremap <C-n> :NERDTreeToggle<LF>

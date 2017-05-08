@@ -1,0 +1,139 @@
+# set modifier
+set $super Mod4
+set $alt Mod1
+set $mod $alt
+
+# set font
+font pango: Noto Sans 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#autostart
+exec --no-startup-id hsetroot -center ~/.wallpaper.png
+# exec --no-startup-id xsettingsd &
+# exec --no-startup-id compton -b
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# start dmenu (a program launcher)
+bindsym $mod+Shift+e exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym $mod+e exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+
+# common apps keybinds
+# bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
+# bindsym $mod+Shift+backslash exec i3lock -i ~/.wallpaper.png
+bindsym $mod+m exec brave-browser
+bindsym $mod+backslash exec thunar
+
+#change volume
+bindsym $mod+v exec volctl up
+bindsym $mod+w exec volctl down
+bindsym $mod+z exec volctl toggle
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout split
+bindsym $mod+s layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+Shift+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+n            workspace next
+bindsym $mod+b            workspace prev
+bindsym $mod+bracketleft  workspace 7
+bindsym $mod+braceleft    workspace 5
+bindsym $mod+braceright   workspace 3
+bindsym $mod+parenleft    workspace 1
+bindsym $mod+equal        workspace 9
+bindsym $mod+asterisk     workspace 0
+bindsym $mod+parenright   workspace 2
+bindsym $mod+plus         workspace 4
+bindsym $mod+bracketright workspace 6
+bindsym $mod+exclam       workspace 8
+
+# move focused container to workspace
+bindsym $mod+Shift+bracketleft  move container to workspace 7
+bindsym $mod+Shift+braceleft    move container to workspace 5
+bindsym $mod+Shift+braceright   move container to workspace 3
+bindsym $mod+Shift+parenleft    move container to workspace 1
+bindsym $mod+Shift+equal        move container to workspace 9
+bindsym $mod+Shift+asterisk     move container to workspace 0
+bindsym $mod+Shift+parenright   move container to workspace 2
+bindsym $mod+Shift+plus         move container to workspace 4
+bindsym $mod+Shift+bracketright move container to workspace 6
+bindsym $mod+Shift+exclam       move container to workspace 8
+
+bindsym $mod+Shift+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Ctrl+Shift+r restart
+
+# exit i3
+bindsym $mod+Ctrl+Escape exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Return mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# panel
+bar {
+        colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #bf616a #d8dee8
+        active_workspace        #2f343f #2f343f #d8dee8
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspacei       #2f343f #ebcb8b #2f343f
+    }
+        status_command i3status
+}
+
+# window rules, you can find the window class using xprop
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+# for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
+# for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+
+default_border pixel 4
+# colour of border, background, text, indicator, and child_border
+client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
