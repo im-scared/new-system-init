@@ -18,14 +18,15 @@ regtest() {
 }
 
 with_sudo() {
-  if [[ "$1" == "-s" || -z "$1" ]]; then
-    echo "s[$1|$2]"
+  if [[ "$1" == "-s" ]]; then
     shift
     sudo "$@"
-  else
-    echo "n[$1]"
-    "$@"
+    return
   fi
+
+  [[ -z "$1" ]] && shift
+
+  "$@"
 }
 
 backup() {
