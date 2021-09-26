@@ -3,7 +3,7 @@
 THIS="$(realpath -s ${BASH_SOURCE[0]})"
 THIS_PATH="$(dirname ${BASH_SOURCE[0]})"
 REPO_DIR="$THIS_PATH"
-CONFIG_DIR="$REPO_DIR/.config"
+CONFIG_DIR="$REPO_DIR/config"
 
 header() {
   echo -e "\n"
@@ -19,9 +19,11 @@ regtest() {
 
 with_sudo() {
   if [[ "$1" == "-s" || -z "$1" ]]; then
+    echo "s[$1|$2]"
     shift
     sudo "$@"
   else
+    echo "n[$1]"
     "$@"
   fi
 }
