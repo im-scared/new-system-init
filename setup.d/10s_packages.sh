@@ -19,6 +19,7 @@ apt install -y \
   httpie \
   imagemagick \
   jq \
+  kitty \
   lxappearance \
   neovim \
   nitrogen \
@@ -38,5 +39,5 @@ apt install -y \
   zsh
   # rxvt-unicode \
 
-header "Installing snaps"
-snap install alacritty --classic
+# header "Installing snaps"
+# snap install alacritty --classic

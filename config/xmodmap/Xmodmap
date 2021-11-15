@@ -1,2 +1,5 @@
 remove Lock = Caps_Lock
 keysym Caps_Lock = Escape
+keycode 74 = F11
+keycode 75 = F11
+keycode 76 = F11

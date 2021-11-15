@@ -12,6 +12,7 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'cocopon/iceberg.vim'
+Plugin 'fladson/vim-kitty'
 Plugin 'gilgigilgil/anderson.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'preservim/nerdtree'

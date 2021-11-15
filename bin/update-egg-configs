@@ -8,6 +8,12 @@ cd "$REPO_DIR"
 echo "Pulling latest changes..."
 git pull --ff-only
 
+echo "Initializing submodules..."
+git submodule update --init --recursive
+
+echo "Pulling latest changes from submodules..."
+git submodule update --remote
+
 echo "Running setup..."
 ./setup.sh
 

@@ -71,7 +71,7 @@ ensure_link() {
   fi
   local source="$(realpath "$1")"
   local target="$2"
-  local bak="$3"
+  local bak="${3:-${2}.bak}"
 
   if [[ -e "$target" && "$(readlink -nm $target)" == "$source" ]]; then
     echo "[$target] is already linked to version controlled version: $source"
