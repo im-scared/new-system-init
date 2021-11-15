@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# source setup scirpt to get utils
-source "$1"
-
-
 header "Installing NordVPN"
 
 if which nordvpn; then

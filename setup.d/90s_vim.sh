@@ -1,19 +1,10 @@
 #!/bin/bash
 
-# source setup scirpt to get utils
-source "$1"
-REPO_DIR="$2"
-CONFIG_DIR="$3"
-
-SYSTEM_CONFIG="/etc/vim/vimrc.local"
-BACKUP_PATH="/etc/vim/vimrc.local.bak"
-VERSIONED_CONFIG="$CONFIG_DIR/vimrc.local"
-BUNDLE_DIR="/usr/share/vim/bundle"
-VUNDLE_PATH="$BUNDLE_DIR/Vundle.vim"
+VUNDLE_PATH="/usr/share/vim/bundle/Vundle.vim"
 
 header "Configuring vim"
 
-ensure_link "$VERSIONED_CONFIG" "$SYSTEM_CONFIG" "$BACKUP_PATH"
+ensure_link "$CONFIG_DIR/vimrc.local" "/etc/vim/vimrc.local"
 
 echo "Looking for Vundle..."
 if [[ ! -e "$VUNDLE_PATH" ]]; then

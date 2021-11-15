@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# source setup scirpt to get utils
-source "$1"
-
 header "Updating package db"
 apt update
 header "Installing packages"
@@ -37,7 +34,4 @@ apt install -y \
   xsel \
   xsettingsd \
   zsh
-  # rxvt-unicode \
 
-# header "Installing snaps"
-# snap install alacritty --classic
