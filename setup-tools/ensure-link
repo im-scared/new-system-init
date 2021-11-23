@@ -16,9 +16,9 @@ link() {
   ln -s "$source" "$target"
 }
 
-local source="$(realpath "$1")"
-local target="$2"
-local bak="${3:-${2}.bak}"
+source="$(realpath "$1")"
+target="$2"
+bak="${3:-${2}.bak}"
 
 if [[ -e "$target" || -L "$target" ]]; then
   if [[ "$(readlink -nm "$target")" == "$source" ]]; then

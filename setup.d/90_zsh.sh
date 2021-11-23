@@ -9,6 +9,6 @@ else
   echo "Oh My Zsh found."
 fi
 
-ensure_link "$CONFIG_DIR/zshrc" "$HOME/.zshrc"
-ensure_link "$CONFIG_DIR/powerlevel10k" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+ensure-link "$CONFIG_DIR/zshrc" "$HOME/.zshrc"
+ensure-link "$CONFIG_DIR/powerlevel10k" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
 

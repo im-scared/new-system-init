@@ -4,7 +4,7 @@ VUNDLE_PATH="/usr/share/vim/bundle/Vundle.vim"
 
 header "Configuring vim"
 
-ensure_link "$CONFIG_DIR/vimrc.local" "/etc/vim/vimrc.local"
+ensure-link "$CONFIG_DIR/vimrc.local" "/etc/vim/vimrc.local"
 
 echo "Looking for Vundle..."
 if [[ ! -e "$VUNDLE_PATH" ]]; then
