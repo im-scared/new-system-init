@@ -19,6 +19,7 @@ apt install -y \
   kitty \
   lxappearance \
   neovim \
+  nfs-common \
   nitrogen \
   pavucontrol \
   pulseaudio \
