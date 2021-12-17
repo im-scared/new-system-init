@@ -1,30 +1,33 @@
 # set modifier
 set $super Mod4
 set $alt Mod1
-set $mod $alt
+set $mod Mod1
 
 # set font
-font pango: Noto Sans 8
+font pango: MesloLGS NF Regular 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 #autostart
+exec --no-startup-id xset r rate 200 40
+exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id hsetroot -center ~/.wallpaper.png
+exec --no-startup-id nm-applet
 # exec --no-startup-id xsettingsd &
 # exec --no-startup-id compton -b
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec x-terminal-emulator
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+e exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym $mod+e exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $mod+Shift+e exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=11'"
+bindsym $mod+e exec rofi -show drun -lines 12 -padding 18 -width 60 -location 0 -sidebar-mode -columns 3 -font 'Noto Sans 11'
 
 # common apps keybinds
 # bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 # bindsym $mod+Shift+backslash exec i3lock -i ~/.wallpaper.png
-bindsym $mod+m exec brave-browser
+bindsym $mod+m exec x-www-browser
 bindsym $mod+backslash exec thunar
 
 #change volume
@@ -48,22 +51,24 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+at split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+slash split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout split
-bindsym $mod+s layout toggle split
+workspace_layout tabbed
+bindsym $mod+semicolon layout tabbed
+bindsym $mod+comma layout stacking
+bindsym $mod+period layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+space floating toggle
 
 # switch to workspace
 bindsym $mod+n            workspace next
@@ -100,11 +105,12 @@ bindsym $mod+Ctrl+Escape exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
         bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
@@ -116,7 +122,7 @@ bar {
         separator #4b5262
 
         # colour of border, background, and text
-        focused_workspace       #2f343f #bf616a #d8dee8
+        focused_workspace       #2f343f #81a1c1 #2f343f
         active_workspace        #2f343f #2f343f #d8dee8
         inactive_workspace      #2f343f #2f343f #d8dee8
         urgent_workspacei       #2f343f #ebcb8b #2f343f
@@ -126,6 +132,7 @@ bar {
 
 # window rules, you can find the window class using xprop
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+for_window [title="Event Tester"] floating enable
 # for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 # for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
