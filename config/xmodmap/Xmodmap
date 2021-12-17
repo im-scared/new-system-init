@@ -1,5 +1,5 @@
-remove Lock = Caps_Lock
-keysym Caps_Lock = Escape
+keycode 133 = Escape
+keycode 66 = Escape
 keycode 74 = F11
 keycode 75 = F11
 keycode 76 = F11
