@@ -8,3 +8,4 @@ else
   sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 fi
 
+# nordvpn whitelist add subnet 192.168.0.0/16
