@@ -1,0 +1,24 @@
+#!/bin/bash
+
+usage() {
+  echo "usage: volctl (up|down|mute)"
+}
+
+comm="${1,,}"
+
+if [[ ! $comm =~ ^(up|down|mute)$ ]]; then
+  usage
+  exit 1
+fi
+
+case "$comm" in
+  up)
+    pactl set-sink-volume 1 +5%
+    ;;
+  down)
+    pactl set-sink-volume 1 -5%
+    ;;
+  mute)
+    pactl set-sink-mute 1 toggle
+    ;;
+esac

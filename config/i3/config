@@ -17,23 +17,19 @@ exec --no-startup-id nm-applet
 # exec --no-startup-id xsettingsd &
 # exec --no-startup-id compton -b
 
-# start a terminal
-bindsym $mod+Return exec x-terminal-emulator
-
 # start dmenu (a program launcher)
 bindsym $mod+Shift+e exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=11'"
 bindsym $mod+e exec rofi -show drun -lines 12 -padding 18 -width 60 -location 0 -sidebar-mode -columns 3 -font 'Noto Sans 11'
 
 # common apps keybinds
-# bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
-# bindsym $mod+Shift+backslash exec i3lock -i ~/.wallpaper.png
+bindsym $mod+Return exec x-terminal-emulator
 bindsym $mod+m exec x-www-browser
 bindsym $mod+backslash exec thunar
 
 #change volume
 bindsym $mod+v exec volctl up
 bindsym $mod+w exec volctl down
-bindsym $mod+z exec volctl toggle
+bindsym $mod+z exec volctl mute
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -136,9 +132,9 @@ for_window [title="Event Tester"] floating enable
 # for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 # for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
-default_border pixel 4
+default_border pixel 2
 # colour of border, background, text, indicator, and child_border
-client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
+client.focused              #2f343f #81a1c1 #2f343f #bf616a #d8dee8
 client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
