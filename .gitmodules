@@ -2,5 +2,5 @@
 	path = config/zsh/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
 [submodule "kitty-themes"]
-	path = config/kitty/themes
+	path = config/kitty/kitty-themes
 	url = git@github.com:dexpota/kitty-themes.git
