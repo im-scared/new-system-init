@@ -59,3 +59,12 @@ nnoremap <S-j> <C-w>j
 nnoremap <S-k> <C-w>k
 nnoremap <S-l> <C-w>l
 nnoremap <C-n> :NERDTreeToggle<LF>
+nnoremap g<C-h> :tabm -1<LF>
+nnoremap g<C-l> :tabm +1<LF>
+nnoremap <F11> :source ~/.sys-conf/config/vim/vimrc.local<LF>
+
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
