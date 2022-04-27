@@ -12,7 +12,7 @@ floating_modifier $mod
 #autostart
 exec --no-startup-id xset r rate 200 40
 exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id hsetroot -center ~/.wallpaper.png
+# exec --no-startup-id hsetroot -center ~/.wallpaper.png
 exec --no-startup-id nm-applet
 # exec --no-startup-id xsettingsd &
 # exec --no-startup-id compton -b
@@ -27,9 +27,9 @@ bindsym $mod+m exec x-www-browser
 bindsym $mod+backslash exec thunar
 
 #change volume
-bindsym $mod+v exec volctl up
-bindsym $mod+w exec volctl down
-bindsym $mod+z exec volctl mute
+bindsym $mod+v exec --no-startup-id volctl up
+bindsym $mod+w exec --no-startup-id volctl down
+bindsym $mod+z exec --no-startup-id volctl mute
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -61,10 +61,10 @@ bindsym $mod+comma layout stacking
 bindsym $mod+period layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space floating toggle
+bindsym $mod+space focus mode_toggle
 
 # switch to workspace
 bindsym $mod+n            workspace next
