@@ -12,7 +12,7 @@ regtest() {
   return $?
 }
 
-usage() { echo "Usage: $0 [-h] [-n] [-s <scrip1,script2,etc.>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-h] [-n] [-s <script1,script2,...>]" 1>&2; exit 1; }
 
 while getopts ":hns:" o; do
   case "${o}" in
@@ -40,15 +40,15 @@ for script in $REPO_DIR/setup.d/*; do
   script_basename="$(basename "$script")"
   script_name="${script_basename#*_}"
   script_name="${script_name%.*}"
-  if [[ ! ",$scripts," =~ ",$script_name," ]]; then
+  if [[ ! -z "$scripts" && ! ",$scripts," =~ ",$script_name," ]]; then
     continue
   fi
   
   if regtest "$script_basename" '^[[:digit:]]{2}s_'; then
-    if [[ ! -z "$dry_run" ]]; then echo "Would run [$script] with sudo."; continue; fi
+    if [[ ! -z "$dry_run" ]]; then echo "Would run [$script_name] with sudo"; continue; fi
     sudo PATH="$PATH" REPO_DIR="$REPO_DIR" CONFIG_DIR="$CONFIG_DIR/$script_name" "$script"
   else
-    if [[ ! -z "$dry_run" ]]; then echo "Would run [$script]."; continue; fi
+    if [[ ! -z "$dry_run" ]]; then echo "Would run [$script_name]"; continue; fi
     PATH="$PATH" REPO_DIR="$REPO_DIR" CONFIG_DIR="$CONFIG_DIR/$script_name" "$script"
   fi
 done
