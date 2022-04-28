@@ -38,3 +38,5 @@ apt install -y \
   xsettingsd \
   zsh
 
+header "Updating alternatives"
+update-alternatives --set x-terminal-emulator /usr/bin/kitty
