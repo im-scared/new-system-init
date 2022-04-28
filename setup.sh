@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 THIS="$(realpath -s ${BASH_SOURCE[0]})"
 THIS_PATH="$(dirname ${BASH_SOURCE[0]})"
 REPO_DIR="$THIS_PATH"
@@ -14,6 +16,8 @@ regtest() {
 
 usage() { echo "Usage: $0 [-h] [-n] [-s <script1,script2,...>]" 1>&2; exit 1; }
 
+dry_run=""
+scripts=""
 while getopts ":hns:" o; do
   case "${o}" in
     n)
