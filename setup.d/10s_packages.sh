@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 header "Updating package db"
 apt update
 header "Installing packages"
