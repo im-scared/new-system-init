@@ -46,8 +46,8 @@ set softtabstop=2
 set shiftwidth=2
 set number
 syntax on
-colorscheme anderson
-colorscheme nord
+silent! colorscheme anderson
+silent! colorscheme nord
 
 noremap ; :
 noremap : ;
