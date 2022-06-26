@@ -1,19 +1,36 @@
 #!/bin/bash
 
+set -euo pipefail
+
 THIS="$(realpath -s ${BASH_SOURCE[0]})"
-THIS_PATH="$(dirname ${BASH_SOURCE[0]})"
-REPO_DIR="$(realpath "$THIS_PATH/..")"
+THIS_DIR="$(dirname $THIS)"
+REPO_DIR="$(realpath "$THIS_DIR/..")"
+
+PATH="$REPO_DIR/setup-tools:$PATH"
 
 cd "$REPO_DIR"
+
+header "Update repo..."
+if [[ `git status --porcelain` ]]; then
+  warn "Found local changes to the repo. Stashing them..."
+  git stash
+fi
+
+if [[ "$(git branch --show-current)" != "main" ]];then
+  echo "Checking out 'main' branch..."
+  git checkout main
+fi
+
 echo "Pulling latest changes..."
 git pull --ff-only
+if [[ $? -ne 0 ]]; then
+  error "Could not fast-forward the 'main' branch. Please fix the issue and try again."
+  exit 1
+fi
 
-echo "Initializing submodules..."
-git submodule update --init --recursive
-
-echo "Pulling latest changes from submodules..."
+echo "Updating submodules..."
 git submodule update --remote
 
-echo "Running setup..."
+header "Running setup..."
 ./setup.sh
 
