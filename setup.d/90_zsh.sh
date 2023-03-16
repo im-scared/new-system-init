@@ -12,6 +12,7 @@ fi
 ensure-link "$CONFIG_DIR/profile" "$HOME/.profile"
 ensure-link "$CONFIG_DIR/zprofile" "$HOME/.zprofile"
 ensure-link "$CONFIG_DIR/powerlevel10k" "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+ensure-link "$CONFIG_DIR/custom-plugins" "$HOME/.oh-my-zsh/custom/plugins"
 ensure-link "$CONFIG_DIR/p10k.zsh" "$HOME/.p10k.zsh"
 ensure-link "$CONFIG_DIR/zshrc" "$HOME/.zshrc"
 

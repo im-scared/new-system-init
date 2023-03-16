@@ -85,6 +85,7 @@ plugins=(
   docker-compose
   docker
   git
+  git-auto-status
   history-substring-search
   httpie
   jump
@@ -93,6 +94,7 @@ plugins=(
 )
 
 ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
+NVM_AUTOLOAD=1
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
@@ -127,5 +129,5 @@ alias vv='vim ~/.sys-conf/config/vim/vimrc.local'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="/mnt/ns/usr/share/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/mnt/ns/usr/share/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
