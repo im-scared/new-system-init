@@ -15,7 +15,7 @@ echo "Installing git..."
 sudo apt install -y git
 
 echo "Cloning repo..."
-git clone git@github.com:im-scared/new-system-init.git "$SYS_CONF"
+git clone https://github.com/im-scared/new-system-init.git "$SYS_CONF"
 cd "$SYS_CONF"
 echo "Initializing submodules..."
 git submodule update --init --recursive
