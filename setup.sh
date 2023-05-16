@@ -50,7 +50,7 @@ for script in $REPO_DIR/setup.d/*; do
   
   if regtest "$script_basename" '^[[:digit:]]{2}s_'; then
     if [[ ! -z "$dry_run" ]]; then echo "Would run [$script_name] with sudo"; continue; fi
-    sudo PATH="$PATH" REPO_DIR="$REPO_DIR" CONFIG_DIR="$CONFIG_DIR/$script_name" "$script"
+    sudo PATH="$PATH" REPO_DIR="$REPO_DIR" CONFIG_DIR="$CONFIG_DIR/$script_name" ORIG_USER="$USER" "$script"
   else
     if [[ ! -z "$dry_run" ]]; then echo "Would run [$script_name]"; continue; fi
     PATH="$PATH" REPO_DIR="$REPO_DIR" CONFIG_DIR="$CONFIG_DIR/$script_name" "$script"
