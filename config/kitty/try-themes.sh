@@ -49,6 +49,15 @@ clamp() {
 	fi
 }
 
+cat <<COMMANDS
+COMMANDS:
+	left/right arrows -- change theme
+	up arrow          -- include theme (themes are included by default)
+	down arrow        -- exclude theme
+	p                 -- print the current theme to stdout
+	u                 -- update the current theme file link
+COMMANDS
+
 ls -lAhFG
 # ls -lAhFG kitty-themes
 
@@ -74,34 +83,36 @@ while [[ theme_i -lt ${#theme_files[@]} && exit_selection -eq 0 ]]; do
 
 	while true; do
 		first_char="$(read_char)"
-		if [[ "$first_char" == "70" ]]; then
+		if [[ "$first_char" == "70" ]]; then # char: p
 			echo "current theme: $(basename "$theme_file" .conf)"
-		elif [[ "$first_char" == "75" ]]; then
-			echo "updating theme to: $(basename "$theme_file" .conf)"
+		elif [[ "$first_char" == "75" ]]; then # char: u
+			prev_theme=$(basename "$(readlink theme.conf)" .conf
+			echo "updating theme to: $(basename "$theme_file" .conf) [was: $prev_theme]"
+			echo "[$(date -I)] $prev_theme" >> prev-themes.txt
 			ln -sf "$theme_file" theme.conf
 		fi
-		[[ "$first_char" == "1b" ]] || continue
+		[[ "$first_char" == "1b" ]] || continue # char: <Esc>
 
 		second_char="$(read_char)"
-		if [[ "$second_char" == "1b" ]]; then
+		if [[ "$second_char" == "1b" ]]; then # char: <Esc>
 			exit_selection=1
 			break
 		fi
-		[[ "$second_char" == "5b" ]] || continue
+		[[ "$second_char" == "5b" ]] || continue # char: <escape sequence start>
 
 		case "$(read_char)" in
-			41) # up
+			41) # char: up arrow
 				# echo "pinning $(basename "$theme_file" .conf)"
 				good_themes["$theme_file"]=1
 				;;
-			42) # down
+			42) # char: down arrow
 				good_themes["$theme_file"]=0
 				;;
-			43) # right
+			43) # char: right arrow
 				theme_i="$(clamp 0 ${#theme_files[@]} $((theme_i+1)))"
 				break
 				;;
-			44) # left
+			44) # char: left arrow
 				theme_i="$(clamp 0 ${#theme_files[@]} $((theme_i-1)))"
 				break
 				;;
